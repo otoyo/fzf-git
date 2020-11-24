@@ -1,4 +1,4 @@
-function __git-fzf() {
+function __fzf-git() {
   local preview='echo {} | \
     awk "
       \$0 ~ /^[AMD] / { print \"git diff --color --staged \"\$2 }
@@ -6,14 +6,14 @@ function __git-fzf() {
       \$0 ~ /^\?\? /  { print \"echo \\\"Untracked file\\\"\" }" | \
     xargs -L1 -I{} zsh -c {}'
 
-  local selected=$(__git-fzf__git_status | fzf -m --ansi --preview="$preview" | awk '{ print $2 }')
+  local selected=$(__fzf-git__git_status | fzf -m --ansi --preview="$preview" | awk '{ print $2 }')
   if [[ -n "$selected" ]]; then
     selected=$(tr '\n' ' ' <<< "$selected")
     echo $selected
   fi
 }
 
-function __git-fzf__git_status() {
+function __fzf-git__git_status() {
   unbuffer git status -s | \
     awk '{
       # ?? file
@@ -38,12 +38,12 @@ function __git-fzf__git_status() {
     }'
 }
 
-function git-fzf-widget() {
-  local selected=$(__git-fzf)
+function fzf-git-widget() {
+  local selected=$(__fzf-git)
   if [[ -n "$selected" ]]; then
     BUFFER="${BUFFER}${selected}"
     zle redisplay
   fi
 }
 
-zle -N git-fzf-widget
+zle -N fzf-git-widget
