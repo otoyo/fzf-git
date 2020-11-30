@@ -30,4 +30,9 @@ Add the following into `~/.zshrc`
   bindkey '^G' fzf-git-widget
 ```
 
-Now you cat use fzf-git by Ctrl+G in the Git repositories.
+And reload `~/.zshrc`
+```sh
+$ source ~/.zshrc
+```
+
+Now you cat use fzf-git by `Ctrl+G` in the Git repositories.
