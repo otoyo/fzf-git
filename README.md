@@ -26,8 +26,9 @@ $ git clone git@github.com:otoyo/fzf-git.git
 Add the following into `~/.zshrc`
 ```sh
 [ -d ~/fzf-git ] && \
-  source ~/fzf-git/fzf-git.zsh &&  \
-  bindkey '^G' fzf-git-widget
+  source ~/fzf-git/fzf-git.zsh && \
+  bindkey '^G' fzf-git-widget && \
+  bindkey '^H' fzf-git-commit-widget
 ```
 
 And reload `~/.zshrc`
@@ -35,4 +36,4 @@ And reload `~/.zshrc`
 $ source ~/.zshrc
 ```
 
-Now you cat use fzf-git by `Ctrl+G` in the Git repositories.
+Now you cat use fzf-git by `Ctrl+G` and `Ctrl+H` in the Git repositories.

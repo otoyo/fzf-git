@@ -13,6 +13,16 @@ function __fzf-git() {
   fi
 }
 
+function __fzf-git-commit() {
+  local preview='echo {} | awk "{ print \"git diff --color \"\$1\"~1 \" \$1 }" | xargs -L1 -I{} zsh -c {}'
+  local selected=$(unbuffer git --no-pager log --pretty=format:'%C(auto)%h %ad %an - %s%d' --date=format:'%Y-%m-%d %H:%M:%S' | \
+    fzf --ansi --preview="$preview" | \
+    awk '{ print $1 }')
+  if [[ -n "$selected" ]]; then
+    echo $selected
+  fi
+}
+
 function __fzf-git__git_status() {
   unbuffer git status -s | \
     awk '{
@@ -46,4 +56,13 @@ function fzf-git-widget() {
   fi
 }
 
+function fzf-git-commit-widget() {
+  local selected=$(__fzf-git-commit)
+  if [[ -n "$selected" ]]; then
+    BUFFER="${BUFFER}${selected}"
+    zle redisplay
+  fi
+}
+
 zle -N fzf-git-widget
+zle -N fzf-git-commit-widget
