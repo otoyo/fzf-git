@@ -16,9 +16,10 @@ function __fzf-git() {
 function __fzf-git-commit() {
   local preview='echo {} | awk "{ print \"git diff --color \"\$1\"~1 \" \$1 }" | xargs -L1 -I{} zsh -c {}'
   local selected=$(unbuffer git --no-pager log --pretty=format:'%C(auto)%h %ad %an - %s%d' --date=format:'%Y-%m-%d %H:%M:%S' | \
-    fzf --ansi --preview="$preview" | \
+    fzf -m --ansi --preview="$preview" | \
     awk '{ print $1 }')
   if [[ -n "$selected" ]]; then
+    selected=$(tr '\n' ' ' <<< "$selected")
     echo $selected
   fi
 }
