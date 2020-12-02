@@ -36,4 +36,24 @@ And reload `~/.zshrc`
 $ source ~/.zshrc
 ```
 
-Now you cat use fzf-git by `Ctrl+G` and `Ctrl+H` in the Git repositories.
+Now you can use fzf-git by `Ctrl+G` and `Ctrl+H` in the Git repositories.
+
+And, you can use multi-select by pressing `Tab` in fzf console.
+
+## Widgets
+
+* `fzf-git-widget`: Search files from `git status`
+* `fzf-git-commit-widget`: Search commits from `git log`
+
+## Update
+
+Move to fzf-git.git repository and pull.
+
+```sh
+$ cd ~/fzf-git
+$ git pull origin master
+```
+
+## Contoribution
+
+Feel free to open a Pull Requests ;)
