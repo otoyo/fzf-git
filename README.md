@@ -47,13 +47,14 @@ And, you can use multi-select by pressing `Tab` in fzf console.
 
 ## Update
 
-Move to fzf-git.git repository and pull.
+Pull fzf-git.git and reload `~/.zshrc`
 
 ```sh
 $ cd ~/fzf-git
 $ git pull origin master
+$ source ~/.zshrc
 ```
 
-## Contoribution
+## Contribution
 
 Feel free to open a Pull Requests ;)
