@@ -1,9 +1,28 @@
 # fzf-git
 
-fzf-git makes Git files selection easy.
+fzf-git makes Git files and commits selection easy.
+
+## Feature
+
+### File selection
 
 ![fzf-git](https://user-images.githubusercontent.com/1063435/100101343-77d71d00-2ea5-11eb-803f-3be1b1dfc232.gif)
 
+Key-bindings
+
+* `Tab` key to select multi files
+* `Ctrl+down` to scroll preview
+
+### Commits selection
+
+![git-fzf-commit](https://user-images.githubusercontent.com/1063435/101238994-8637fb00-3727-11eb-92f2-c406e92d5b38.gif)
+
+Key-bindings
+
+* `Tab` key to select multi commits
+* `Ctrl+down` to scroll preview
+* `left` key to display branch selection in the commits selection
+* `right` key to display commits of selected branch in the branch selection
 
 ## Requirements
 
