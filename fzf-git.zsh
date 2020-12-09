@@ -1,9 +1,11 @@
 function __fzf-git() {
   local preview='echo {} | \
     awk "
-      \$0 ~ /^[AMD] / { print \"git diff --color --staged \"\$2 }
-      \$0 ~ /^ [AMD]/ { print \"git diff --color \"\$2 }
-      \$0 ~ /^\?\? /  { print \"echo \\\"Untracked file\\\"\" }" | \
+      \$0 ~ /^[AM] / { print \"git diff --color --staged \"\$2 }
+      \$0 ~ /^ [AM]/ { print \"git diff --color \"\$2 }
+      \$0 ~ /^D /    { print \"git diff --color --staged -- \"\$2 }
+      \$0 ~ /^ D/    { print \"git diff --color -- \"\$2 }
+      \$0 ~ /^\?\? / { print \"echo \\\"Untracked file\\\"\" }" | \
     xargs -L1 -I{} zsh -c {}'
 
   local selected=$(__fzf-git__git_status | fzf -m --ansi --preview="$preview" | awk '{ print $2 }')
