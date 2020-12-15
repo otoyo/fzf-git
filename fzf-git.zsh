@@ -29,7 +29,7 @@ function __fzf-git-commit() {
     fi'
 
   local selected=$(zsh -c $source_git_log | \
-    fzf --ansi --multi --reverse --preview "$preview" --header-lines 1 \
+    fzf --ansi --multi --reverse --no-sort --preview "$preview" --header-lines 1 \
       --bind 'left:reload('$source_git_branch')' \
       --bind 'right:reload('$source_git_log' {1})' \
       --bind 'tab:toggle+up' | \
