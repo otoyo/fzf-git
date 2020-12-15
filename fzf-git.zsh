@@ -35,7 +35,7 @@ function __fzf-git-commit() {
       --bind 'tab:toggle+up' | \
     sed -e 's/\* //g' | awk '{ print $1 }')
   if [[ -n "$selected" ]]; then
-    selected=$(tr '\n' ' ' <<< "$selected" | sed -e 's/ *$//' | sed -e 's/ /../')
+    selected=$(tr '\n' ' ' <<< "$selected" | sed -e 's/ *$//')
     echo $selected
   fi
 }
