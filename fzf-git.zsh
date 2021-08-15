@@ -11,6 +11,7 @@ function __fzf-git() {
   local selected=$(__fzf-git__git_status | fzf -m --ansi --preview="$preview" | awk '{ print $2 }')
   if [[ -n "$selected" ]]; then
     selected=$(tr '\n' ' ' <<< "$selected")
+    selected=$(echo $selected | sed -e 's/\([][\(\)]\)/\\\1/g')
     echo $selected
   fi
 }
