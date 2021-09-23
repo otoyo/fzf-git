@@ -1,5 +1,5 @@
 function __fzf-git() {
-  local preview='echo {} | \
+  local preview='echo {} | sed -e "s/\([][\(\)]\)/\\ \1/g" | \
     awk "
       \$0 ~ /^[AM] / { print \"git diff --color --staged \"\$2 }
       \$0 ~ /^ [AM]/ { print \"git diff --color \"\$2 }
